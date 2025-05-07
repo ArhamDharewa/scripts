@@ -43,18 +43,11 @@ EOF
 echo -e "${YELLOW}Adding user to groups...${NC}"
 sudo usermod -aG sudo,adm arham
 
-# Configure SSH to allow password authentication
-echo -e "${YELLOW}Configuring SSH for password authentication...${NC}"
-sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-sudo systemctl restart sshd
-
 # Download and install NoMachine for remote desktop
 echo -e "${YELLOW}Installing NoMachine remote desktop...${NC}"
 wget https://download.nomachine.com/download/8.16/Linux/nomachine_8.16.1_1_amd64.deb
 sudo dpkg -i nomachine_8.16.1_1_amd64.deb
 
-# Get the VM's external IP address
-EXTERNAL_IP=$(curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip)
 
 echo -e "${GREEN}==================================================${NC}"
 echo -e "${GREEN}Android Development Environment Setup Complete!${NC}"
