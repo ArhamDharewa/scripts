@@ -23,12 +23,10 @@ echo -e "${YELLOW}Updating system packages...${NC}"
 sudo apt-get update
 sudo apt-get upgrade -y
 
-# Clone akhilnarang's scripts for Android build environment
-echo -e "${YELLOW}Cloning Android build environment scripts...${NC}"
-git clone https://github.com/akhilnarang/scripts
-cd scripts
-bash setup/android_build_env.sh
-cd ..
+# Download and run akhilnarang's script for Android build environment
+echo -e "${YELLOW}Downloading Android build environment script...${NC}"
+curl -O https://raw.githubusercontent.com/akhilnarang/scripts/master/setup/android_build_env.sh
+bash android_build_env.sh
 
 # Install desktop environment
 echo -e "${YELLOW}Installing Ubuntu Desktop environment...${NC}"
